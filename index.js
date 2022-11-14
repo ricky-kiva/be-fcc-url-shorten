@@ -40,7 +40,7 @@ app.post('/api/shorturl', function(req, res) {
   }
   
   if (dnsReg.test(url)) {
-    dnsUrl = url.replace(dnsReg, "")
+    dnsUrl = new URL(url).hostname;
   } else {
     res.json({error: "Invalid URL"});
     return;
