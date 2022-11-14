@@ -5,9 +5,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const fs = require('fs');
 const dns = require('dns');
-const jsonUrl = require('./public/shortenedurl.json');
 let rawUrl = fs.readFileSync('./public/shortenedurl.json');
-let shortenedurl = JSON.parse(rawUrl)
+let shortenedurl = JSON.parse(rawUrl);
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -28,15 +27,16 @@ function sendUrl(data, cb) {
 
 // Your first API endpoint
 app.post('/api/shorturl', function(req, res) {
+  
   let dnsUrl;
   let numShort;
   let url = req.body.url;
   let dnsReg = /https:\/\/|http:\/\//g;
-  
-  if ((jsonUrl.length) === 0) {
+
+  if ((shortenedurl.length) === 0) {
     numShort = 1;
   } else {
-    numShort = (jsonUrl[(jsonUrl.length)-1]['short_url']) + 1;
+    numShort = (shortenedurl[(shortenedurl.length)-1]['short_url']) + 1;
   }
   
   if (dnsReg.test(url)) {
@@ -46,9 +46,9 @@ app.post('/api/shorturl', function(req, res) {
     return;
   }
 
-  for (let i = 0; i < jsonUrl.length; i++) {
-    if (jsonUrl[i]["original_url"] == url) {
-      res.json(jsonUrl[i])
+  for (let i = 0; i < shortenedurl.length; i++) {
+    if (shortenedurl[i]["original_url"] == url) {
+      res.json(shortenedurl[i])
       return;
     }
   }
@@ -78,9 +78,9 @@ app.get('/api/shorturl/:num', function(req, res) {
   let locNum;
   let num = req.params.num;
   
-  for (let i = 0; i < jsonUrl.length; i++) {
-    if (jsonUrl[i]["short_url"] == num) {
-      res.redirect(jsonUrl[i]["original_url"])
+  for (let i = 0; i < shortenedurl.length; i++) {
+    if (shortenedurl[i]["short_url"] == num) {
+      res.redirect(shortenedurl[i]["original_url"])
     }
   }
   
