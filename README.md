@@ -8,4 +8,4 @@ This is a simple microservice to make short url by provided url.
   - Short URL code
 - Access your short url by GET on `/api/shorturl/:shorturlcode`
 
-[![Run on Repl.it](https://repl.it/badge/github/freeCodeCamp/boilerplate-npm)](https://b-end-fcc-url-shorten.ricky-kiva.repl.co/api/shorturl)
+[![Run on Repl.it](https://repl.it/badge/github/freeCodeCamp/boilerplate-npm)](https://b-end-fcc-url-shorten.ricky-kiva.repl.co/)
