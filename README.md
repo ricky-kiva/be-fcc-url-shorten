@@ -1,3 +1,11 @@
 # URL Shortener Microservice
 
-This is the boilerplate code for the URL Shortener Microservice project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice.
+This is a simple microservice to make short url by provided url.
+
+- Post the url via the web form
+- Responds JSON will provide:
+  - Your original URL
+  - Short URL code
+- Access your short url by GET on `/api/shorturl/:shorturlcode`
+
+[![Run on Repl.it](https://repl.it/badge/github/freeCodeCamp/boilerplate-npm)](https://b-end-fcc-url-shorten.ricky-kiva.repl.co/api/shorturl)
